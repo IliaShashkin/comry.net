@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Codex — Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="src/script.js"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">Codex</div>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="discord-btn">Discord</button>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <h1 class="hero-title">
+            Crafting clean & modern<br>
+            digital experiences
+        </h1>
+        <p class="hero-subtitle">
+            Frontend • UI/UX • Animations • Minimalism
+        </p>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section fade">
+        <h2>About Me</h2>
+        <p>
+            I build modern web interfaces focused on clarity,
+            subtle animations and strong visual hierarchy.
+            Codex is my digital signature.
+        </p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section fade">
+        <h2>My Projects</h2>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Codex UI</h3>
+                <p>Minimal UI system with smooth animations</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Dashboard</h3>
+                <p>Analytics dashboard with clean layout</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Landing Page</h3>
+                <p>High-conversion landing experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section fade">
+        <h2>Get in Touch</h2>
+
+        <form class="contact-form" id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required />
+            <input type="email" id="email" placeholder="Your Email" required />
+            <textarea id="message" placeholder="Your Message" required></textarea>
+
+            <button type="submit" class="contact-btn">
+                Send Message
+            </button>
+
+            <p class="form-status" id="formStatus"></p>
+        </form>
+    </section>
+
+</main>
+
+<footer>
+    © 2025 Codex. All rights reserved.
+</footer>
+
+</body>
+</html>
