@@ -16,21 +16,57 @@ document.querySelector('.discord-btn').addEventListener('click', () => {
 });
 
 // Contact button
-document.getElementById('mailtoBtn').addEventListener('click', () => {
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+// Используем ваш Cloudflare Worker, чтобы скрыть реальный Discord Webhook
+const workerURL = "https://workercomrynet.comry.workers.dev";
 
-    const to = encodeURIComponent('you@example.com');
-    const subject = encodeURIComponent('Сообщение с портфолио');
-    const bodyLines = [];
-    if (name) bodyLines.push('Name: ' + name);
-    if (email) bodyLines.push('Senders email: ' + email);
-    if (message) bodyLines.push('', 'Message: ', message);
-    const body = encodeURIComponent(bodyLines.join('\n'));
+const form = document.getElementById("contactForm");
+const statusText = document.getElementById("formStatus");
 
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-});
+if (form) {
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        if (!name || !email || !message) {
+            statusText.textContent = "Please fill in all fields.";
+            return;
+        }
+
+        statusText.textContent = "Sending message...";
+
+        // Отправляем чистые данные на воркер
+        const payload = {
+            name: name,
+            email: email,
+            message: message
+        };
+
+        try {
+            const response = await fetch(workerURL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                statusText.textContent = "Message sent successfully!";
+                form.reset();
+            } else {
+                statusText.textContent = "Failed to send message.";
+            }
+        } catch (error) {
+            console.error(error);
+            statusText.textContent = "Error sending message.";
+        }
+    });
+}
+
+
 
 // Navbar shadow + hide scroll-indicator logic
 (function() {
