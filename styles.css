@@ -1,10 +1,12 @@
 :root {
     --accent: #B21752;
+    --accent-light: #ff3b6f;
     --soft-lavender: #E6ACC6;
     --muted-purple: #A3659E;
     --deep-purple: #3C1A40;
     --blue-purple: #5E3584;
     --background: #FAF8FB;
+    --black: #121212;
 }
 
 * {
@@ -36,8 +38,32 @@ body {
 .logo {
     font-size: 22px;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--blue-purple);
     letter-spacing: 0.5px;
+}
+
+/*=====logo animation====*/
+.logo-dot {
+    display: inline-block;
+    color: var(--accent);
+    transform-origin: center;
+    will-change: transform, color, text-shadow;
+    animation: dotPulse 1.1s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0% {
+        color: var(--black);
+        text-shadow: none;
+    }
+    50% {
+        color: var(--accent-light);
+        text-shadow: 0 0 14px rgba(205, 29, 96, 0.58);
+    }
+    100% {
+        color: var(--black);
+        text-shadow: none;
+    }
 }
 
 nav a {
@@ -85,6 +111,7 @@ nav a:hover::after {
     flex-direction: column;
     justify-content: center;
     animation: heroFade 1.2s ease forwards;
+    position: relative;
 }
 
 .hero-title {
@@ -213,6 +240,134 @@ footer {
     from {
         opacity: 0;
         transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*======== Navbar Shadow======== */
+.navbar.scrolled {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    background: rgba(250,248,251,0.96);
+    transition: box-shadow 0.28s ease, background 0.28s ease;
+}
+
+/* =======Scroll indicator ===== */
+.scroll-indicator {
+    position: absolute;
+    left: 50%;
+    /* Начальная позиция */
+    transform: translateX(-50%) translateY(0);
+    bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    pointer-events: none;
+
+    /* ИЗМЕНЕНО: Ставим 1 по умолчанию, чтобы после анимации контроль вернулся к CSS */
+    opacity: 1;
+    /* Убрали 'forwards', чтобы анимация не блокировала свойства после завершения */
+    animation: indicatorFadeIn 0.9s ease;
+
+    /* Плавный переход для скрытия */
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    z-index: 5;
+}
+
+@keyframes indicatorFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.scroll-indicator.hide {
+    /* Останавливаем анимацию входа, если она еще идет, чтобы сработал transition */
+    animation: none;
+    opacity: 0;
+    /* Сдвигаем немного вниз при исчезновении */
+    transform: translateX(-50%) translateY(10px);
+    pointer-events: none;
+}
+/* ====Mouse ===== */
+.mouse {
+    width: 36px;
+    height: 56px;
+    border-radius: 18px;
+    border: 2px solid rgba(178,23,82,0.16);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-top: 8px;
+}
+
+.mouse .wheel {
+    width: 4px;
+    height: 10px;
+    background: var(--accent-light);
+    border-radius: 2px;
+    animation: wheelMove 1.6s cubic-bezier(.2,.8,.2,1) infinite;
+}
+
+/* ====== Wheel smooth ======*/
+@keyframes wheelMove {
+    0%   { transform: translateY(0); opacity: 1; }
+    50%  { transform: translateY(10px); opacity: 0.35; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.scroll-text {
+    font-size: 13px;
+    color: var(--blue-purple);
+    font-weight: 600;
+    opacity: 0.95;
+    pointer-events: none;
+}
+
+/* ===== TECH STACK ===== */
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+}
+
+.tech-card {
+    background: white;
+    border-radius: 16px;
+    padding: 18px 22px;
+    text-align: center;
+    font-weight: 500;
+    color: var(--deep-purple);
+    border: 1px solid #eee;
+    cursor: default;
+
+    animation: stackFadeUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.tech-card span {
+    color: var(--accent);
+    font-size: 15px;
+    letter-spacing: 0.3px;
+}
+
+/* stagger animation */
+.tech-card:nth-child(1) { animation-delay: 0.05s; }
+.tech-card:nth-child(2) { animation-delay: 0.1s; }
+.tech-card:nth-child(3) { animation-delay: 0.15s; }
+.tech-card:nth-child(4) { animation-delay: 0.2s; }
+.tech-card:nth-child(5) { animation-delay: 0.25s; }
+.tech-card:nth-child(6) { animation-delay: 0.3s; }
+.tech-card:nth-child(7) { animation-delay: 0.35s; }
+.tech-card:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes stackFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
     }
     to {
         opacity: 1;

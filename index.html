@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Codex — Portfolio</title>
+    <title>Comry.net — Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
 <body>
 
 <header class="navbar">
-    <div class="logo">Codex</div>
+    <div class="logo">Comry<span class="logo-dot">.</span>net</div>
 
     <nav>
         <a href="#about">About</a>
@@ -27,23 +27,68 @@
     <!-- HERO -->
     <section class="hero">
         <h1 class="hero-title">
-            Crafting clean & modern<br>
-            digital experiences
+            Building clean & functional<br>
+            software solutions
         </h1>
         <p class="hero-subtitle">
-            Frontend • UI/UX • Animations • Minimalism
+            Frontend • Backend • Databases • Software Development
         </p>
+        <div class="scroll-indicator" aria-hidden="true">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="scroll-text"></div>
+        </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="section fade">
         <h2>About Me</h2>
         <p>
-            I build modern web interfaces focused on clarity,
-            subtle animations and strong visual hierarchy.
-            Codex is my digital signature.
+            I am a computer science student with a strong interest in software development.
+            I enjoy building both frontend and backend solutions, focusing on clean structure,
+            logic and usability.
+        </p>
+
+        <p>
+            My main interests include web development, backend systems and programming in
+            multiple languages. I actively work with databases and constantly improve my
+            skills by learning new technologies and building personal projects.
+
         </p>
     </section>
+    <!-- TECH-STACK -->
+    <section id="tech-stack" class="section fade">
+        <h2>Tech Stack</h2>
+
+        <div class="tech-stack">
+            <div class="tech-card">
+                <span>JavaScript</span>
+            </div>
+            <div class="tech-card">
+                <span>HTML & CSS</span>
+            </div>
+            <div class="tech-card">
+                <span>C#</span>
+            </div>
+            <div class="tech-card">
+                <span>C</span>
+            </div>
+            <div class="tech-card">
+                <span>Python</span>
+            </div>
+            <div class="tech-card">
+                <span>Java</span>
+            </div>
+            <div class="tech-card">
+                <span>Oracle DB</span>
+            </div>
+            <div class="tech-card">
+                <span>SQLite</span>
+            </div>
+        </div>
+    </section>
+
 
     <!-- PROJECTS -->
     <section id="projects" class="section fade">
@@ -51,8 +96,8 @@
 
         <div class="projects-grid">
             <div class="project-card">
-                <h3>Codex UI</h3>
-                <p>Minimal UI system with smooth animations</p>
+                <h3>Comry.net</h3>
+                <p>Portfolio website - frontend and backend.</p>
             </div>
 
             <div class="project-card">
@@ -71,23 +116,15 @@
     <section id="contact" class="section fade">
         <h2>Get in Touch</h2>
 
-        <form class="contact-form" id="contactForm">
-            <input type="text" id="name" placeholder="Your Name" required />
-            <input type="email" id="email" placeholder="Your Email" required />
-            <textarea id="message" placeholder="Your Message" required></textarea>
-
-            <button type="submit" class="contact-btn">
-                Send Message
-            </button>
-
-            <p class="form-status" id="formStatus"></p>
-        </form>
+        <button type="button" id="mailtoBtn" class="contact-btn">
+            Send Message
+        </button>
     </section>
 
 </main>
 
 <footer>
-    © 2025 Codex. All rights reserved.
+    © 2025 Comry.net | All rights reserved.
 </footer>
 
 </body>
