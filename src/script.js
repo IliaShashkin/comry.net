@@ -16,7 +16,6 @@ document.querySelector('.discord-btn').addEventListener('click', () => {
 });
 
 // Contact button
-// Используем ваш Cloudflare Worker, чтобы скрыть реальный Discord Webhook
 const workerURL = "https://workercomrynet.comry.workers.dev";
 
 const form = document.getElementById("contactForm");
@@ -37,7 +36,6 @@ if (form) {
 
         statusText.textContent = "Sending message...";
 
-        // Отправляем чистые данные на воркер
         const payload = {
             name: name,
             email: email,
@@ -84,11 +82,9 @@ if (form) {
     let hideTimeout = null;
     function hideIndicator() {
         if (!indicator) return;
-        // запустить плавное скрытие
         indicator.classList.add('hide');
 
         const onEnd = (e) => {
-            // игнорировать посторонние свойства
             if (e && e.propertyName && e.propertyName !== 'opacity' && e.propertyName !== 'transform') return;
             indicator.removeEventListener('transitionend', onEnd);
             if (indicator.parentNode) indicator.parentNode.removeChild(indicator);
@@ -97,7 +93,6 @@ if (form) {
 
         indicator.addEventListener('transitionend', onEnd);
 
-        // запасной таймаут на случай, если transitionend не сработает
         const fallback = setTimeout(() => {
             try { onEnd(); } finally { clearTimeout(fallback); }
         }, 1000);
